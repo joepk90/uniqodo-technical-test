@@ -31,9 +31,15 @@ const Promotion = class {
 
     async getPromotionalCode() {
 
+        const promoCode = this.getPromotionCode();
+
+        if (!promoCode) {
+            return;
+        }
+
         let uniqodoResponse;
         try {
-            uniqodoResponse = await getUniqodoData(this.getPromotionCode());
+            uniqodoResponse = await getUniqodoData(promoCode);
         }
         catch (err) {
             console.log(err.message);
