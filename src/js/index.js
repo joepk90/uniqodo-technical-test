@@ -13,12 +13,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
+    const promotionalElementsPromises = [];
     promotionalElements.forEach(promotionalElement => {
 
         const promotionHTML = new Promotion(promotionalElement);
 
-        promotionHTML.updatePromotionHTML();
+        const promotionalCodePromise = new Promise((resolve, reject) => {
+
+            try {
+                promotionHTML.updatePromotionHTML();
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+
+        });
+
+        promotionalElementsPromises.push(promotionalCodePromise);
 
     });
+
+    Promise.all(promotionalElementsPromises);
 
 });
