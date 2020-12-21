@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const promotionalElements = promotions.getPromotionsElements();
 
-    Array.from(promotionalElements).forEach(promotionalElement => {
+    if (!promotionalElements || promotionalElements.length === 0) {
+        return;
+    }
 
-        const promotionHTML = new Promotion(promotionalElement)
+    promotionalElements.forEach(promotionalElement => {
+
+        const promotionHTML = new Promotion(promotionalElement);
 
         promotionHTML.updatePromotionHTML();
 
