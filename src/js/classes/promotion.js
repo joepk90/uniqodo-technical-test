@@ -73,7 +73,7 @@ const Promotion = class {
 
         const promoCode = await this.getPromotionalCode();
 
-        if (!promoCode) return;
+        if (!promoCode || !promoCode.data || !promoCode.data.code) return;
 
         this.updatePromotionElement(promoCode.data.code)
 
