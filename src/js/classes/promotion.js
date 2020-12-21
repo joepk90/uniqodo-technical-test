@@ -6,26 +6,46 @@ const Promotion = class {
         this.promoElement = promoElement;
     }
 
+    promoElementHasChildElements() {
+
+        if (this.promoElement.childElementCount === 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    getPromotionalElement() {
+
+        let element = this.promoElement;
+        if (this.promoElementHasChildElements() === true) {
+            element = this.promoElement.lastChild;
+        }
+
+        return element;
+
+    }
+
     /**
      * check for valid promtional element
      */
     getPromotionCode() {
 
-        if (this.promoElement.childElementCount === 0) {
-            return this.promoElement.innerText;
-        }
+        const promoElement = this.getPromotionalElement();
 
-        return this.promoElement.lastChild.innerText;
+        return promoElement.innerText;
 
     }
 
+    /**
+     * TO DO remove duplication here, 
+     * @param {*} text 
+     */
     updatePromotionElement(text) {
 
-        if (this.promoElement.childElementCount === 0) {
-            return this.promoElement.innerText = text;
-        }
+        const promoElement = this.getPromotionalElement();
 
-        return this.promoElement.lastChild.innerText = text;
+        promoElement.innerText = text;
 
     }
 
