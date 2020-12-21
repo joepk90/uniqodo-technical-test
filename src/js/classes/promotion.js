@@ -15,6 +15,9 @@ const Promotion = class {
         return true;
     }
 
+    /**
+   * check for valid promtional element
+   */
     getPromotionalElement() {
 
         let element = this.promoElement;
@@ -26,9 +29,6 @@ const Promotion = class {
 
     }
 
-    /**
-     * check for valid promtional element
-     */
     getPromotionCode() {
 
         const promoElement = this.getPromotionalElement();
@@ -37,10 +37,6 @@ const Promotion = class {
 
     }
 
-    /**
-     * TO DO remove duplication here, 
-     * @param {*} text 
-     */
     updatePromotionElement(text) {
 
         const promoElement = this.getPromotionalElement();
