@@ -1,11 +1,20 @@
-import getUniqodoData from './services/uniqodo';
+import Promotions from './classes/promotions';
+import Promotion from './classes/promotion';
 
 import "../scss/style.scss";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const data = await getUniqodoData();
+    const promotions = new Promotions();
 
-    console.log(data);
+    const promotionalElements = promotions.getPromotionsElements();
+
+    Array.from(promotionalElements).forEach(promotionalElement => {
+
+        const promotionHTML = new Promotion(promotionalElement)
+
+        promotionHTML.updatePromotionHTML();
+
+    });
 
 });
