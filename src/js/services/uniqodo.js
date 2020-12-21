@@ -2,6 +2,10 @@ import axios from './axios';
 
 function getUniqodoData(value) {
 
+    if (!value) {
+        return;
+    }
+
     const axiosParams = {
         params: {
             "promo-name": value,
